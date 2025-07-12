@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Account Details</title>
+    <!-- Add Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS styles */
+        .account-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .account-detail {
+            background: lightgray;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 70%;
+        }
+        .delete-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container account-container">
+    <h1>Account Information</h1>
+    <div class="account-detail">
+        <strong>Account ID:</strong> <span th:text="${account.accountId}"></span>
+    </div>
+    <div class="account-detail">
+        <strong>User Name:</strong> <span th:text="${account.userName}">Welcome</span>
+    </div>
+    <div class="account-detail">
+        <strong>Account Holder Name:</strong> <span th:text="${account.accountHolderName}"></span>
+    </div>
+    <div class="account-detail">
+        <strong>Bank Name:</strong> <span th:text="${account.bankName}"></span>
+    </div>
+    <div class="account-detail">
+        <strong>Account Number:</strong> <span th:text="${account.accountNumber}"></span>
+    </div>
+    <div class="account-detail">
+        <strong>Account Remark:</strong> <span th:text="${account.accountRemark}"></span>
+    </div>
+    <form th:action="@{/modify}" method="post" class="delete-button">
+        <input type="hidden" th:value="${account.accountId}" name="accountId">
+        <button type="submit" class="btn btn-danger">Modify</button>
+    </form>
+    <form th:action="@{/delete}" method="post" class="delete-button">
+        <input type="hidden" th:value="${account.accountId}" name="accountId">
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+    </form>
+    <a th:href="@{/index}" class="btn btn-primary mt-3">Logout</a>
+</div>
+<!-- Add Bootstrap JS scripts here (optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Modify Account</title>
+    <!-- Add Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS styles */
+        .account-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .account-detail {
+            background: lightgray;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 70%;
+        }
+        .form-container {
+            width: 70%;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .modify-buttons {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container account-container">
+    <h1>Modify Account</h1>
+    <form th:action="@{/modifyUser}" method="post" class="form-container">
+        <input type="hidden" th:value="${account.accountId}" name="accountId">
+
+        <div class="form-group">
+            <label for="accountHolderName">Account Holder Name:</label>
+            <input type="text" class="form-control" id="accountHolderName" th:value="${account.accountHolderName}" name="accountHolderName">
+        </div>
+
+        <div class="form-group">
+            <label for="bankName">Bank Name:</label>
+            <input type="text" class="form-control" id="bankName" th:value="${account.bankName}" name="bankName">
+        </div>
+
+        <div class="form-group">
+            <label for="accountNumber">Account Number:</label>
+            <input type="text" class="form-control" id="accountNumber" th:value="${account.accountNumber}" name="accountNumber">
+        </div>
+
+        <div class="form-group">
+            <label for="accountRemark">Account Remark:</label>
+            <textarea class="form-control" id="accountRemark" name="accountRemark" th:text="${account.accountRemark}"></textarea>
+        </div>
+
+        <div class="modify-buttons">
+            <button type="submit" class="btn btn-success">Save</button>
+            <a th:href="@{/home}" class="btn btn-secondary ml-2">Cancel</a>
+        </div>
+    </form>
+</div>
+<!-- Add Bootstrap JS scripts here (optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
